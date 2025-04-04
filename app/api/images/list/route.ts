@@ -68,7 +68,7 @@ export async function GET(request: NextRequest) {
     
     // Sort by creation date (newest first) and apply pagination
     const sortedImages = allImages.sort((a, b) => 
-      new Date(b.createdOn).getTime() - new Date(a.createdOn).getTime()
+      new Date(b.createdOn ?? 0).getTime() - new Date(a.createdOn ?? 0).getTime()
     );
     
     const paginatedImages = sortedImages.slice(skip, skip + pageSize);
